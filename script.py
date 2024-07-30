@@ -12,10 +12,12 @@ caminho = r"C:\Program Files\Tesseract-OCR"
 pytesseract.pytesseract.tesseract_cmd = caminho + r'\tesseract.exe'
 
 # Path to save the screenshot
-screenshot_dir = r"C:/Users/AdminDell/Desktop/AUTOMATIZA_GARCA/images"
-
+screenshot_dir = r"C:/Users/AdminDell/Desktop/AUTOMATIZACAO_RELATORIO_GARCA/images"
+if not os.path.exists(screenshot_dir):
+    os.makedirs(screenshot_dir)
+    
 # Path to save the Excel file
-excel_file_path = r"C:/Users/AdminDell/Desktop/AUTOMATIZA_GARCA/results.xlsx"
+excel_file_path = r"C:/Users/AdminDell/Desktop/AUTOMATIZACAO_RELATORIO_GARCA/results.xlsx"
 
 def print_ip():
     global cont_geral
