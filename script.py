@@ -51,19 +51,22 @@ def print_data():
 
 def print_coord():
     global cont_geral
-    left = 971
-    top = 679
-    width = 218
-    height = 22
+    left = 969
+    top = 674
+    width = 222
+    height = 27
     screenshot_coord = pyautogui.screenshot(region=(left, top, width, height))
     screenshot_path_coord = os.path.join(screenshot_dir, f"coord_{cont_geral}.png")
     screenshot_coord.save(screenshot_path_coord)
 
-    coord = pytesseract.image_to_string(screenshot_path_coord, config='--psm 7').strip()
+    custom_config = r'--oem 3 --psm 7 -c tessedit_char_whitelist=" 0123456789.,NSWE"'
+    coord = pytesseract.image_to_string(screenshot_path_coord, config=custom_config).strip()
+    
     print("Coordenadas: ")
     print(coord)
     
     return coord
+
 
 def print_logradouro():
     global cont_geral
