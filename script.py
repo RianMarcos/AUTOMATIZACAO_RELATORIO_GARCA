@@ -70,10 +70,10 @@ def print_coord():
 
 def print_logradouro():
     global cont_geral
-    left = 834
-    top = 801
-    width = 273
-    height = 17
+    left = 737
+    top = 797
+    width = 378
+    height = 21
     screenshot = pyautogui.screenshot(region=(left, top, width, height))
     screenshot_path = os.path.join(screenshot_dir, f"logradouro_{cont_geral}.png")
     screenshot.save(screenshot_path)
