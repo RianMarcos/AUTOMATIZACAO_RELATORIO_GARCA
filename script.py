@@ -5,7 +5,7 @@ import openpyxl
 import pyautogui
 from time import sleep
 
-quantidade = 100
+quantidade = 1000
 cont_geral = 0
 i = 0
 caminho = r"C:\Program Files\Tesseract-OCR"
@@ -36,10 +36,10 @@ def print_ip():
 
 def print_data():
     global cont_geral
-    left = 952
+    left = 950
     top = 655
-    width = 238
-    height = 26
+    width = 240
+    height = 23
     screenshot = pyautogui.screenshot(region=(left, top, width, height))
     screenshot_path = os.path.join(screenshot_dir, f"results_{cont_geral}.png")
     screenshot.save(screenshot_path)
@@ -51,10 +51,10 @@ def print_data():
 
 def print_coord():
     global cont_geral
-    left = 969
-    top = 674
-    width = 222
-    height = 27
+    left = 961
+    top = 678
+    width = 228
+    height = 23
     screenshot_coord = pyautogui.screenshot(region=(left, top, width, height))
     screenshot_path_coord = os.path.join(screenshot_dir, f"coord_{cont_geral}.png")
     screenshot_coord.save(screenshot_path_coord)
@@ -77,8 +77,9 @@ def print_logradouro():
     screenshot = pyautogui.screenshot(region=(left, top, width, height))
     screenshot_path = os.path.join(screenshot_dir, f"logradouro_{cont_geral}.png")
     screenshot.save(screenshot_path)
-
-    logradouro = pytesseract.image_to_string(screenshot_path, lang='por', config='--psm 7').strip()
+    
+    custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"'
+    logradouro = pytesseract.image_to_string(screenshot_path, lang='por', config=custom_config).strip()
     print("Logradouro: "+ logradouro)
     
     return logradouro
